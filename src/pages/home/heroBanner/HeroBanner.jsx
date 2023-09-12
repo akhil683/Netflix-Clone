@@ -33,9 +33,7 @@ const HeroBanner = () => {
           <Img src={background} />
         </div>
       }
-
       <div className="opacity-layer">
-        
       </div>
 
       <ContentWrapper>
@@ -51,7 +49,7 @@ const HeroBanner = () => {
                 type="text" 
                 placeholder='Search for a movie or tv show...'
               />
-              <button>Search</button>
+              <button onClick={() => navigate(`/search/${query}`)}>Search</button>
             </div>
           </div>  
       </ContentWrapper>
