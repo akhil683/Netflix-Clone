@@ -6,9 +6,11 @@ import './searchResult.style.scss';
 
 import { fetchDataFromApi } from '../../utils/api';
 import ContentWrapper from '../../components/contentWrapper/ContentWrapper';
-import MovieCard from "../../components/movieCard/MovieCard";
+
+import MovieCard from '../../components/movieCard/MovieCard';
 import Spinner from "../../components/spinner/Spinner";
 import noResults from "../../assets/no-results.png";
+import Img from '../../components/lazyLoadImage/Img';
 
 const SearchResult = () => {
   const [ data, setData ] = useState(null);
@@ -25,7 +27,6 @@ const SearchResult = () => {
     })
   }
   const fetchNextPageData = () => {
-    // setLoading(true);
     fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`).then((res) => {
       if(data?.results) {
         setData({
@@ -77,6 +78,7 @@ const SearchResult = () => {
           ) : (
             <span className='resultNotFound'>
               Sorry, Results Not Found!
+              <Img src={noResults} />
             </span>
           )}
         </ContentWrapper>
